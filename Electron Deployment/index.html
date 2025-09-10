@@ -1,0 +1,147 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="render.js" defer></script>
+  </head>
+  <body>
+    <div id="topDivContainer">
+      <div class="upload-section">
+        <label for="upload"><img src="icons/file-upload.png"></img>&ensp; Uploader Un Nouveau Fichier</label>
+        <input type="file" id="upload" accept=".xlsx, .xls">
+      </div>
+    </div>
+    <div class="kpi-section">
+      <div class="kpi-card">
+        <div class="IconsDiv"><img src="icons/moneyIcon.png"></img><h3>CA Total</h3></div>
+        <div class="kpi-value" id="ca-total">0 DH</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="IconsDiv"><img src="icons/trophies.png"></img><h3> Meilleur Commercial</h3></div>
+        <div class="kpi-value" id="top-commercial-name">-</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="IconsDiv"><img src="icons/charts.png"></img><h3> CA par Service</h3></div>
+        <div class="service-breakdown" id="service-breakdown">
+          <div class="kpi-subtitle">Aucune donnée disponible</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="div-filters">
+
+      <div class="div-select">
+        <p>Sélectionner un Client: </p>
+        <div class="inputDiv">
+          <input placeholder="Tous Les Clients" name="Client" id="select-clientName"></input>
+          <button onclick="clearInput(this)" class="clearInputButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <span class="span-unvalid-value">Client non valide</span>
+        <div style="display:none" id="div-Client-dropDown">
+        </div>
+      </div>
+
+      <div class="div-select">
+         <p>Sélectionner un Commercial:</p>
+        <div class="inputDiv">
+          <input placeholder="Tous Les Commerciaux" name="Commercial" id="select-Comercial">
+          <button onclick="clearInput(this)" class="clearInputButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <span class="span-unvalid-value">Commercial non valide</span>
+        <div style="display:none" id="div-Commercial-dropDown">
+        </div>
+        </input>
+      </div>
+
+      <div class="div-select">
+        <p>Sélectionner un Service:</p>
+        <div class="inputDiv">
+          <input placeholder="Tous Les Services" name="Service" id="select-Service">
+          <button onclick="clearInput(this)" class="clearInputButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <span class="span-unvalid-value">Service non valide</span>
+        <div style="display:none" id="div-Service-dropDown">
+        </div>
+        </input>
+      </div>
+
+      <div class="div-select">
+        <p>Sélectionner un Dossier:</p>
+        <div class="inputDiv">
+          <input placeholder="Tous Les Dossier" name="Dossier" id="select-Dossier">
+          <button onclick="clearInput(this)" class="clearInputButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <span class="span-unvalid-value">Dossier non valide</span>
+        <div style="display:none" id="div-Dossier-dropDown">
+        </div>
+        </input>
+      </div>
+
+      <div class="div-select">
+        <p>De la Date:</p>
+        <input type="date" name="Date de facturation" id="select-FromDate"></input>
+      </div>
+
+      <div class="div-select">
+        <p>A la Date:</p>
+        <input type="date" name="Date de facturation" id="select-ToDate"></input>
+      </div>
+      <div id="div-graph-options">
+        <p>Paramètres de Graph:</p>
+
+        <select id="select-inRelationOf">
+          <option value="all">Tous les paramètres</option>
+          <option value="all in one">Tout-en-un</option>
+          <option value="Client">Clients</option>
+          <option value="Commercial">Commerciaux</option>
+          <option value="Service">Services</option>
+          <option value="Dossier">Dossiers</option>
+          <option value="Date de facturation">Date de facturation</option>
+        </select>
+
+      </div>
+      <div id="div-graph-options">
+        <p>Type de Graph:</p>
+
+        <select id="select-graphType">
+          <option value="bar">Barre</option>
+          <option value="bar-h">Barre horizontale</option>
+          <option value="line">Ligne</option>
+          <option value="doughnut">Anneau</option>
+          <option value="pie">Camembert</option>
+        </select>
+      </div>
+      <div id="div-buttons">
+        <button style="background-color:rgba(0,0,0,0.8)" onclick="resetFilters()">Réinitialiser</button>
+        <button style="background-color:#3b82f6" onclick="createChartUsingFilters()">Confirmer</button>
+      </div>
+    </div>
+
+    <div id="div-graph"></div>
+  </body>
+</html>

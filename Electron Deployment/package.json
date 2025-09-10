@@ -1,0 +1,31 @@
+{
+  "name": "excel2graph",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.nomix17.excel2graph",
+    "productName": "ExcelToGraph",
+    "directories": {
+      "output": "dist"
+    },
+    "linux": {
+      "target": [
+        "tar.gz"
+      ],
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^26.2.0",
+    "electron-builder": "^24.6.0"
+  }
+}
